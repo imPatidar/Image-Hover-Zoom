@@ -1,0 +1,71 @@
+$container-size: 400px;
+$grid-root: 5;
+$zoom-factor: 1.5;
+// Those ^ 3 things are all you'll need to edit
+$zoom-size: $container-size * $zoom-factor;
+$offset: $zoom-size - $container-size;
+$stepper-count: $grid-root;
+@if $grid-root % 2 == 1 {
+  $stepper-count: $grid-root - 1;
+}
+$stepper: $offset / $stepper-count;
+
+body {
+  background-color: #2A2D34;
+  padding: 2em 0;
+}
+
+.grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: $container-size;
+  overflow: hidden;
+  position: relative;
+  width: $container-size;
+}
+  
+.grid-item {
+  height: 100% / $grid-root;
+  width: 100% / $grid-root;
+  
+  &:hover ~ img {
+    height: percentage($zoom-factor);
+    width: percentage($zoom-factor);
+  }
+  
+  @for $i from 1 through $grid-root {
+    &:hover:nth-of-type(#{$grid-root}n + #{$i}) ~ img {
+      left: (($i - 1) * $stepper) * -1;
+    }
+    
+    $t: (($i - 1) * $grid-root) + 1;
+    
+    &:hover:nth-of-type(1n + #{$t}) ~ .zoom-image {
+      top: (($i - 1) * $stepper) * -1;
+    }
+  }
+}
+
+.zoom-image {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.25s;
+  width: 100%;
+  z-index: -1;
+}
+
+// Colors for development
+.grid-item {
+  background-color: rgba(48, 197, 255, 0.25);
+
+  &:nth-of-type(2n) {
+    background-color: rgba(186, 59, 70, 0.25);
+  }
+}
+
+// Centering the thing for aesthetics
+.grid-wrapper {
+  margin: 0 auto;
+}
