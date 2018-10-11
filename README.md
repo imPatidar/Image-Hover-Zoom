@@ -8,18 +8,18 @@ All thanks to Fuerte Developers,check website  <a href="https://www.fuertedevelo
 # Screenshots
 <div class="row">
   <div class="col-md-6">
-      <img src="img/1.png" width="300" height="300">
+      <img src="img/1.png" width="500" height="500">
   </div>
   <div class="col-md-6">
-      <img src="img/2.png" width="300" height="300">
+      <img src="img/2.png" width="500" height="500">
   </div>
 </div>
 <div class="row">
 <div class="col-md-6">
-      <img src="img/3.png" width="300" height="300">
+      <img src="img/3.png" width="500" height="500">
   </div>
 <div class="col-md-6">
-      <img src="img/4.png" width="300" height="300">
+      <img src="img/4.png" width="500" height="500">
   </div>
 </div>
 
